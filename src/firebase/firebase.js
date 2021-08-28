@@ -1,10 +1,9 @@
 // Import the functions you need from the SDKs you need
-import firebase from "firebase";
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCGcuIouPBKMcx2zdJNq5RNVSpYbXCiptw",
   authDomain: "snapchat-clone-7842a.firebaseapp.com",
@@ -16,9 +15,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = app.firestore();
-const auth = firebase.auth();
-const storage = firebase.storage();
-const provider = new firebase.auth().GoogleAuthProvider();
+const db = getFirestore();
+const auth = getAuth();
+const store = getStorage(app);
+const provider = new GoogleAuthProvider();
 
-export { db, auth, storage, provider };
+export { db, auth, store, provider };
+
+console.log(firebaseConfig);

@@ -15,6 +15,9 @@ import AttachFileIcon from "@material-ui/icons/AttachFile";
 import CropIcon from "@material-ui/icons/Crop";
 import TimerIcon from "@material-ui/icons/Timer";
 import SendIcon from "@material-ui/icons/Send";
+import { v4 as uuid } from "uuid";
+import { db, storage } from "../../firebase/firebase";
+// import firebase from "firebase";
 
 function Preview() {
   const cameraImage = useSelector(selectCameraImage);
@@ -30,6 +33,34 @@ function Preview() {
   const closePreview = () => {
     dispatch(resetCameraImage());
     // history.replace("/");
+  };
+
+  const sendPost = () => {
+    // const id = uuid();
+    // const uploadTask = storage
+    //   .ref(`posts/${id}`)
+    //   .putString(cameraImage, "data_url");
+    // uploadTask.on(
+    //   "state_changed",
+    //   null,
+    //   (err) => console.log(err),
+    //   () => {
+    //     // complete function
+    //     storage
+    //       .ref("posts")
+    //       .child(id)
+    //       .getDownloadURL()
+    //       .then((url) => {
+    //         db.collection("posts").add({
+    //           imageUrl: url,
+    //           username: "Baam",
+    //           read: false,
+    //           timestamp: firebase.firestore.FieldValue.serverTimeStamp(),
+    //         });
+    //         history.replace("/chats");
+    //       });
+    //   }
+    // );
   };
 
   return (
@@ -48,9 +79,9 @@ function Preview() {
 
       <img src={cameraImage} alt="camera" />
 
-      <div className="preview__footer">
+      <div className="preview__footer" onClick={sendPost}>
         <h2>Send Now</h2>
-        <SendIcon fontSize="small" className="preview__send" />
+        <SendIcon fontSize="small" className="preview__sendIcon" />
       </div>
     </div>
   );
