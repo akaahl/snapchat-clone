@@ -17,7 +17,8 @@ import TimerIcon from "@material-ui/icons/Timer";
 import SendIcon from "@material-ui/icons/Send";
 import { v4 as uuid } from "uuid";
 import { db, storage } from "../../firebase/firebase";
-// import firebase from "firebase";
+import firebase from "firebase";
+import "firebase/storage";
 
 function Preview() {
   const cameraImage = useSelector(selectCameraImage);
@@ -36,31 +37,35 @@ function Preview() {
   };
 
   const sendPost = () => {
-    // const id = uuid();
-    // const uploadTask = storage
-    //   .ref(`posts/${id}`)
-    //   .putString(cameraImage, "data_url");
-    // uploadTask.on(
-    //   "state_changed",
-    //   null,
-    //   (err) => console.log(err),
-    //   () => {
-    //     // complete function
-    //     storage
-    //       .ref("posts")
-    //       .child(id)
-    //       .getDownloadURL()
-    //       .then((url) => {
-    //         db.collection("posts").add({
-    //           imageUrl: url,
-    //           username: "Baam",
-    //           read: false,
-    //           timestamp: firebase.firestore.FieldValue.serverTimeStamp(),
-    //         });
-    //         history.replace("/chats");
-    //       });
-    //   }
-    // );
+    const id = uuid();
+
+    const uploadTask = storage
+      .ref(`posts/${id}`)
+      .putString(cameraImage, "data_url");
+
+    console.log(uploadTask);
+
+    uploadTask.on(
+      "state_changed",
+      null,
+      (err) => console.log(err),
+      () => {
+        // complete function
+        storage
+          .ref("posts")
+          .child(id)
+          .getDownloadURL()
+          .then((url) => {
+            db.collection("posts").add({
+              imageUrl: url,
+              username: "Baam",
+              read: false,
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            });
+            history.replace("/chats");
+          });
+      }
+    );
   };
 
   return (
