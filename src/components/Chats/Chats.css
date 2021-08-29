@@ -1,7 +1,7 @@
 .chats {
   position: relative;
-  width: 400px;
-  height: 250px;
+  width: 250px;
+  height: 400px;
 }
 
 .chats__header {
@@ -25,6 +25,16 @@
   padding-left: 8px;
 }
 
+.chats__searchIcon {
+  font-size: 13 !important;
+  color: white;
+}
+
+.chats__chatIcon {
+  font-size: 18px;
+  color: white;
+}
+
 .chats__search > input {
   outline: none;
   background-color: transparent;
@@ -43,7 +53,7 @@
   height: 359px;
   background-color: white;
   box-shadow: 1px -7px 7px -6px rgba(0, 0, 0, 0.44);
-  margin-top: -6px;
+  margin-top: -9px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   overflow: scroll;
@@ -53,4 +63,16 @@
 
 .chats__posts::-webkit-scrollbar {
   display: none;
+}
+
+.chats__takePicIcon {
+  position: absolute;
+  background-color: white;
+  border-radius: 200px;
+  color: gray;
+  font-size: 40px !important;
+  cursor: pointer;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
