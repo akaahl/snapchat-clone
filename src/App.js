@@ -18,11 +18,11 @@ function App() {
             <Route path="/preview">
               <Preview />
             </Route>
-            <Route path="/chats">
-              <Chats />
-            </Route>
             <Route path="/chats/view">
               <ChatView />
+            </Route>
+            <Route path="/chats">
+              <Chats />
             </Route>
           </Switch>
         </div>
