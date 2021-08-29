@@ -4,6 +4,7 @@ import "./Chats.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import { db } from "../../firebase/firebase";
+import Chat from "./Chat/Chat";
 
 function Chats() {
   const [posts, setPosts] = useState([]);
