@@ -18,7 +18,7 @@ function ChatView() {
     if (!selectedImage) {
       exit();
     }
-  }, [selectedImage]);
+  });
 
   return (
     <div className="chatView">
