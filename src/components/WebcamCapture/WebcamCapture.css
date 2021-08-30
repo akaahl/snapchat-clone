@@ -1,5 +1,6 @@
 .webcamCapture {
   position: relative;
+  /* top: -22px; */
 }
 
 .webcamCapture__button {

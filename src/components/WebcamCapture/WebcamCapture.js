@@ -18,8 +18,8 @@ function WebcamCapture() {
   }, [webcamRef, history, dispatch]);
 
   const videoConstraints = {
-    width: 250,
-    height: 400,
+    width: 252,
+    height: 380,
     facingMode: "user",
   };
 
